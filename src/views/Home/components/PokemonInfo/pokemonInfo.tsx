@@ -5,7 +5,7 @@ import { getPoke } from "../../../../adapters/pokemon";
 import { useAsync, StatusType } from "../../../../hooks/useAsync";
 import {pokemonDataTransformer} from "../../transformer"
 import PokemonInfoFallback from "../PokemonLoading";
-
+import SubmitPokemon from "../SubmitPokemon"
 type PokemonInfoProps = {
   pokemonName: string;
 };
@@ -25,7 +25,7 @@ const PokemonInfo: FC<PokemonInfoProps> = ({
   }, [pokemonName, run]);
   switch (status) {
     case "idle":
-      return <span>Submit a pokemon</span>;
+      return <SubmitPokemon />;
     case "pending":
       return <PokemonInfoFallback pokemonName={pokemonName}/>;
     case "error":

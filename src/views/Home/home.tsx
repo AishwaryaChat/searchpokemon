@@ -2,8 +2,10 @@ import { FC, useState } from "react";
 import SearchComponent from "./components/Search/search";
 import PokemonInfo from "./components/PokemonInfo/pokemonInfo";
 import PokemonErrorBoundary from "./components/Error";
+import useStyles from "./home.styles";
 
 const HomeComponent: FC = () => {
+  const classes = useStyles();
   const [pokemonName, setPokemonName] = useState("");
 
   const handleReset = () => {
@@ -14,14 +16,18 @@ const HomeComponent: FC = () => {
     setPokemonName(pokemonName);
   };
   return (
-    <div>
+    <div className={classes.container}>
       <SearchComponent onSubmit={handleSubmit} />
-      <PokemonErrorBoundary
-        resetErrorBoundary={handleReset}
-        resetKeys={[pokemonName]}
-      >
-        <PokemonInfo pokemonName={pokemonName} />
-      </PokemonErrorBoundary>
+      <div className={classes.pokemonInfo}>
+        <PokemonErrorBoundary
+          resetErrorBoundary={handleReset}
+          resetKeys={[pokemonName]}
+        >
+          <div>
+            <PokemonInfo pokemonName={pokemonName} />
+          </div>
+        </PokemonErrorBoundary>
+      </div>
     </div>
   );
 };

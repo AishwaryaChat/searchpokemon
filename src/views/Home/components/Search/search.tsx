@@ -11,20 +11,21 @@ type PropTypes = {
   onSubmit: (a: string) => void;
 };
 
-const Search: FC<PropTypes> = ({
-  onSubmit,
-}) => {
-  const [state, setState] = useState("")
+const Search: FC<PropTypes> = ({ onSubmit }) => {
+  const [state, setState] = useState("");
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setState(e.target.value);
   };
   const handleSubmit = () => {
-    onSubmit(state)
-  }
+    onSubmit(state);
+  };
   return (
-    <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+    <FormControl
+      sx={{ m: 1, width: "80%", backgroundColor: "white" }}
+      variant="outlined"
+    >
       <InputLabel htmlFor="outlined-adornment-password">
-        search with pokemon name
+        search with pokemon name like mew, pikachu, bulbasaur, mewtwo, ditto
       </InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
